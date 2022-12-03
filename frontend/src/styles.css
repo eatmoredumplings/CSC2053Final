@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "LexendDeca";
+    src: local('LexendDeca'), url('./assets/fonts/LexendDeca.ttf') format('truetype');
+}
+
+body {
+    font-family: "LexendDeca";
+}
+
