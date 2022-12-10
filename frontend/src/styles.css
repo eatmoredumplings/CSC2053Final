@@ -4,10 +4,14 @@
 
 @font-face {
     font-family: "LexendDeca";
-    src: local('LexendDeca'), url('./assets/fonts/LexendDeca.ttf') format('truetype');
+    src: local('LexendDeca'), url('./assets/LexendDeca.ttf') format('truetype');
 }
 
 body {
     font-family: "LexendDeca";
 }
 
+.login-screen {
+    margin-left: auto;
+    margin-right: auto;
+}
