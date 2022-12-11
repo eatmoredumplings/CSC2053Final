@@ -22,6 +22,10 @@ const jwt = require('jsonwebtoken');
     });
 };
 
+    const test = (req, res) => {
+        return (req.body.email)
+    }
+
  const logIn =  (req, res) => {
     const email = req.body.email
 
@@ -32,7 +36,7 @@ const jwt = require('jsonwebtoken');
         const validatePassword = bcrypt.compareSync(req.body.password, data[0].password)
 
         if (!validatePassword)
-          return res.status(400).json("Incorrect email or password!")
+          return res.status(400).json("Incorrect password or username!")
 
         const token = jwt.sign({ id: data[0].id }, "jwtSecretKey")
 
@@ -51,4 +55,4 @@ const logOut = (req, res) => {
     }).status(200).json("User has been logged out.")
 };
 
-module.exports = { signUp, logIn, logOut }
+module.exports = { signUp, logIn, logOut, test }
