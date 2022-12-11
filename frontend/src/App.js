@@ -3,12 +3,12 @@ import Dashboard from './pages/Dashboard';
 import Documents from './pages/Documents';
 import Settings from './pages/Settings';
 import ErrorPage from './pages/ErrorPage';
-import VoucherPage from './pages/VoucherPage';
+import Vouchers from './pages/Vouchers';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NavigationBar from './components/NavigationBar';
-import { Navigate, Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthContext from './context/AuthContext';
+import { Navigate, Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 
@@ -17,12 +17,14 @@ function App() {
   const { user } = useContext(AuthContext);
   const queryClient = new QueryClient();
 
-  function Layout () {
+  function Layout() {
     return (
       <QueryClientProvider client={queryClient}>
-        <div className= "relative min-h-screen flex">
+        <div className="relative min-h-screen flex bg-white text-black">
           <NavigationBar />
-          <Outlet />
+          <div className='ml-10 mt-10 w-10/12'>
+            <Outlet />
+          </div>
         </div>
       </QueryClientProvider>
     );
@@ -50,7 +52,7 @@ function App() {
         },
         {
           path: "vouchers",
-          element: <VoucherPage />,
+          element: <Vouchers />,
         },
         {
           path: "documents",

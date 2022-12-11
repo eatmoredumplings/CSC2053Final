@@ -1,19 +1,70 @@
+import Axios from 'axios';
+import { useState, useContext } from 'react';
+import AuthContext from '../context/AuthContext';
+
 function Settings() {
+
+  const { user, setUser } = useContext(AuthContext);
+
+  const [inputs, setInputs] = useState({
+    vendorName: "",
+    email: "",
+    password: ""
+  });
+
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await Axios.patch('api/')
+    }
+    catch {
+
+    }
+  };
+
   return (
-    <div style={{ marginLeft: '50px', marginTop: '50px' }}>
-      <div>
-        <h1 style={{ fontSize: '30px' }}>Account Settings</h1>
-        <p>Change username:{'\n'}</p>
-        <input type="text" className="input input-bordered w-full max-w-xs" />
-        <br></br><br></br>
+    <div className='bg-gray-100 w-1/2'>
+      <h1 className="text-4xl mb-12">Account Settings</h1>
+      <form className="flex flex-col gap-4" autocomplete="off" onSubmit={handleEdit}>
+        <label htmlFor="vendorName">
+          Change vendor name:
+        </label>
+        <input
+          type="text"
+          id="vendorName"
+          name="vendorName"
+          className="input input-bordered w-full bg-white border border-black"
+          onChange={handleChange}
+        />
 
-        <p>Change e-mail:{'\n'}</p>
-        <input type="text" className="input input-bordered w-full max-w-xs" />
-        <br></br><br></br>
+        <label htmlFor="email">
+          Change email:
+        </label>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          className="input input-bordered w-full bg-white border border-black"
+          onChange={handleChange}
+        />
 
-        <p>Change password:{'\n'}</p>
-        <input type="text" className="input input-bordered w-full max-w-xs" />
-      </div>
+        <label htmlFor="password">
+          Change password:
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          className="input input-bordered w-full bg-white border border-black"
+          onChange={handleChange}
+        />
+
+        <button className='border border-black rounded bg-accent text-white'>Save Changes</button>
+      </form>
     </div>
   );
 }
