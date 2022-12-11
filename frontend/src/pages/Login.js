@@ -6,7 +6,7 @@ import AuthContext from "../context/AuthContext";
 
 function Login() {
 
-  const { setUser } = useContext(AuthContext);
+  const { setVendor } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -23,8 +23,8 @@ function Login() {
     e.preventDefault();
     try {
         const response = await Axios.post("/api/auth/login", inputs, { withCredentials: true });
-        setUser(response.data);
-        navigate('/');
+        await setVendor(response.data);
+        window.location.href = '/'
     } catch (err) {
         alert(err.response.data);
     }

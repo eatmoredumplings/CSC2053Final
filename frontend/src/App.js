@@ -14,7 +14,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 function App() {
 
-  const { user } = useContext(AuthContext);
+  const { vendor } = useContext(AuthContext);
   const queryClient = new QueryClient();
 
   function Layout() {
@@ -31,10 +31,11 @@ function App() {
   };
 
   const ProtectedRoute = ({ children }) => {
-    if (!user) {
+    if (!vendor || vendor === undefined) {
       return <Navigate to="/login" />;
-    }
+    } else {
     return children;
+    }
   };
 
   const router = createBrowserRouter([

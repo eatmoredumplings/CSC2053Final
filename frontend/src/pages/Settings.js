@@ -4,7 +4,7 @@ import AuthContext from '../context/AuthContext';
 
 function Settings() {
 
-  const { user, setUser } = useContext(AuthContext);
+  const { vendor, setVendor } = useContext(AuthContext);
 
   const [inputs, setInputs] = useState({
     vendorName: "",

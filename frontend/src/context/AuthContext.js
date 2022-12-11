@@ -3,16 +3,16 @@ import { useState, useEffect, createContext } from 'react';
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(
+    const [vendor, setVendor] = useState(
         JSON.parse(localStorage.getItem("vendor")) || null
     );
 
     useEffect(() => {
-        localStorage.setItem("vendor", JSON.stringify(user));
-    }, [user]);
+        localStorage.setItem("vendor", JSON.stringify(vendor));
+    }, [vendor]);
 
     return (
-        <AuthContext.Provider value={{ user, setUser }}>
+        <AuthContext.Provider value={{ vendor, setVendor }}>
             {children}
         </AuthContext.Provider>
     );
