@@ -1,6 +1,5 @@
 import Axios from 'axios';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 
 const NewVoucher = () => {
@@ -51,7 +50,7 @@ const NewVoucher = () => {
                     <label htmlFor="description" className="text-sm">
                         Description
                     </label>
-                    <input
+                    <textarea
                         type="text"
                         id="description"
                         name="description"
@@ -74,7 +73,7 @@ const NewVoucher = () => {
                         <label htmlFor="priceBefore" className="text-sm">
                             Price Before
                         </label>
-                        <textarea
+                        <input
                             type="number"
                             id="priceBefore"
                             name="priceBefore"

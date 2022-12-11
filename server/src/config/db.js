@@ -3,10 +3,9 @@ const mysql = require("mysql");
 const db = mysql.createConnection({
   user: "root",
   host: "localhost",
+  port:'3306',
   password: process.env.DB_PASSWORD,
-  port    :'3306',
-  database: "puzzoh_database",
+  database: process.env.SCHEMA,
 })
-console.log(process.env.DB_PASSWORD);
 
 module.exports = db

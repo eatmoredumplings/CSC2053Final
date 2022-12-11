@@ -17,7 +17,7 @@ const Vouchers = () => {
       <div className="grid grid-cols-3 gap-8">
         <NewVoucherButton />
         {data?.map((voucher) => (
-          <Voucher key={voucher.id} title={voucher.title} description={voucher.description} category={voucher.category}
+          <Voucher key={voucher.id} id={voucher.id} title={voucher.title} description={voucher.description} category={voucher.category}
             priceBefore={voucher.priceBefore} priceAfter={voucher.priceAfter} maxRedeem={voucher.maxRedeem} expireDate={voucher.expireDate} />
         ))}
       </div>
@@ -36,7 +36,7 @@ const NewVoucherButton = () => {
         </label>
       </label>
 
-      <label for="voucher-modal" className="card bg-slate-200 shadow-xl w-full sm:w-72 h-80 rounded-lg">
+      <label htmlFor="voucher-modal" className="card bg-slate-200 shadow-xl w-full sm:w-72 h-80 rounded-lg">
         <div className="card-body">
           <p>Create new voucher</p>
         </div>
