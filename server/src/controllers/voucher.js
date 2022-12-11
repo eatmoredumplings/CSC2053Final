@@ -40,8 +40,8 @@ const deleteVoucher = (req, res) => {
   if (!token) return res.status(401).json("User is not logged in!")
 
   jwt.verify(token, "jwtSecretKey", (err, vendorInfo) => {
-    db.query("DELETE from vouchers WHERE vendorID = ?",
-      [vendorInfo.id, req.body.id],
+    db.query("DELETE from vouchers WHERE vendorID = ? AND id = ?",
+      [vendorInfo.id, req.params.id],
       (err, data) => {
           if (err) return res.status(500).json(err);
           return res.status(200).json('Voucher has been deleted.')
