@@ -13,6 +13,7 @@ const Voucher = ({ title, description, category, priceBefore, priceAfter, maxRed
         <p><span className="line-through">${priceBefore}</span> ${priceAfter}</p>
         <div className="badge badge-outline">{maxRedeem} remaining</div>
         <p>Expiration date: <span className="italic">{expDate}</span></p>
+        <button>Delete button</button>
       </div>
     </div>
   )
