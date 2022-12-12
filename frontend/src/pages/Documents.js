@@ -47,7 +47,7 @@ function UploadFiles() {
         disabled={fileLimit} />
 
       <label htmlFor='fileUpload'>
-        <div className>Upload Files</div>
+        <div>Upload Files</div>
       </label>
       
 
@@ -117,10 +117,3 @@ const Files = () => {
 }
 
 export default UploadFiles;
-
-
-
-
-
-
-

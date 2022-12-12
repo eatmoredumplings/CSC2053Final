@@ -77,13 +77,13 @@ const EditVoucher = ({ id, title, description, category, priceBefore, priceAfter
                         Category
                     </label>
                     <select
-                        className="select w-full max-w-xs bg-white"
+                        className="select w-full max-w-xs bg-white border border-black rounded-md"
                         onChange={handleCategory}
                     >
-                        <option>Activity</option>
                         <option>Meal</option>
+                        <option>Activity</option>
                     </select>
-                    <div className="flex">
+                    <div className="flex  mb-4 mt-4">
                         <label htmlFor="priceBefore" className="text-sm">
                             Price Before
                         </label>
@@ -91,7 +91,7 @@ const EditVoucher = ({ id, title, description, category, priceBefore, priceAfter
                             type="number"
                             id="priceBefore"
                             name="priceBefore"
-                            className="bg-white rounded-md border border-solid border-black mb-4 text-lg h-12 px-3"
+                            className="bg-white rounded-md border border-solid border-black mr-2 text-lg h-12 px-3 w-1/2"
                             defaultValue={priceBefore}
                             required
                             onChange={handleChange}
@@ -104,7 +104,7 @@ const EditVoucher = ({ id, title, description, category, priceBefore, priceAfter
                             type="number"
                             id="priceAfter"
                             name="priceAfter"
-                            className="bg-white rounded-md border border-solid border-black mb-4 text-lg h-12 px-3"
+                            className="bg-white rounded-md border border-solid border-black text-lg h-12 px-3 w-1/2"
                             defaultValue={priceAfter}
                             required
                             onChange={handleChange}
@@ -131,7 +131,7 @@ const EditVoucher = ({ id, title, description, category, priceBefore, priceAfter
                         id="expireDate"
                         name="expireDate"
                         required
-                        className="bg-white"
+                        className="bg-white border border-black rounded-md"
                         defaultValue={date}
                         onChange={handleDate}
                     />

@@ -31,9 +31,9 @@ function Settings() {
   };
 
   return (
-    <div className='bg-gray-100 w-1/2'>
+    <div className='w-1/2'>
       <h1 className="text-4xl mb-12">Account Settings</h1>
-      <form className="flex flex-col gap-4" autocomplete="off" onSubmit={handleEdit}>
+      <form className="flex flex-col gap-4" autoComplete="off" onSubmit={handleEdit}>
         <label htmlFor="vendorName">
           Change vendor name:
         </label>

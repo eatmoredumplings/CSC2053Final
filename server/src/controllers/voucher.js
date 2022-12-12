@@ -56,8 +56,8 @@ const editVoucher = (req, res) => {
   jwt.verify(token, "jwtSecretKey", (err, vendorInfo) => {
     if (err) return res.status(403).json("Invalid token!")
 
-    db.query("UPDATE vouchers SET ('title, 'description', 'category', 'priceBefore', 'priceAfter', 'maxRedeem', 'createDate', 'expireDate') VALUES (?,?,?,?,?,?,?,?)",
-    [req.body.title, req.body.description, req.body.category, req.body.priceBefore, req.body.priceAfter,
+    db.query("UPDATE vouchers SET ('id', title, 'description', 'category', 'priceBefore', 'priceAfter', 'maxRedeem', 'createDate', 'expireDate') VALUES (?,?,?,?,?,?,?,?) WHERE id = ?",
+    [req.params.id, req.body.title, req.body.description, req.body.category, req.body.priceBefore, req.body.priceAfter,
       req.body.maxRedeem, moment(Date.now()).format("YYYY-MM-DD"), req.body.expireDate],
       (err, data) => {
         if (err) return res.status(500).json(err);
@@ -66,4 +66,5 @@ const editVoucher = (req, res) => {
   });
   
 }
+
 module.exports = { getVouchers, addVoucher, deleteVoucher, editVoucher }

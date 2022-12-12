@@ -7,11 +7,6 @@ import { RiCoupon2Line } from "react-icons/ri";
 
 const Dashboard = () => {
 
-  const { data, status } = useQuery(['Settings'], async () => {
-    const response = await Axios.get("api/settings", { withCredentials: true });
-    return response.data;
-  });
-
   return (
     <div>
      <h2 className='font-extrabold text-3xl mb-4'> Dashboard</h2>
@@ -69,25 +64,5 @@ const Dashboard = () => {
     </div>
   )
 }
-
-const NewVoucherButton = () => {
-
-  return (
-    <div>
-      <input type="checkbox" id="voucher-modal" className="modal-toggle" />
-      <label htmlFor="voucher-modal" className="modal cursor-pointer">
-        <label className="modal-box relative bg-white" htmlFor="">
-        </label>
-      </label>
-
-      <label for="voucher-modal" className="card bg-slate-200 shadow-xl w-full sm:w-72 h-80 rounded-lg">
-        <div className="card-body">
-          <p>Create new voucher</p>
-        </div>
-      </label>
-    </div>
-  );
-
-} 
 
 export default Dashboard;
