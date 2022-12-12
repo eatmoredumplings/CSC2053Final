@@ -9,13 +9,17 @@ function Settings() {
   const [inputs, setInputs] = useState({
     vendorName: "",
     email: "",
-    password: ""
+    password: "",
+    vendorAddress: "",
+    vendorDescription: "",
+    representativeName: "",
+    contactNumber: "",
+    vendorLink: "",
   });
 
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
   const handleEdit = async (e) => {
     e.preventDefault();
     try {
@@ -37,6 +41,7 @@ function Settings() {
           type="text"
           id="vendorName"
           name="vendorName"
+          value={inputs.vendorName}
           className="input input-bordered w-full bg-white border border-black"
           onChange={handleChange}
         />
@@ -48,6 +53,7 @@ function Settings() {
           type="text"
           id="email"
           name="email"
+          value={inputs.email}
           className="input input-bordered w-full bg-white border border-black"
           onChange={handleChange}
         />
@@ -59,11 +65,72 @@ function Settings() {
           type="password"
           id="password"
           name="password"
+          value={inputs.password}
           className="input input-bordered w-full bg-white border border-black"
           onChange={handleChange}
         />
 
+        <label htmlFor="vendorAddress">
+          Change address:
+        </label>
+        <input
+          type="text"
+          id="vendorAddress"
+          name="vendorAddress"
+          value={inputs.vendorAddress}
+          className="input input-bordered w-full bg-white border border-black"
+          onChange={handleChange}
+        />
+
+        <label htmlFor="vendorDescription">
+          Change venue description:
+        </label>
+        <input
+          type="text"
+          id="vendorDescription"
+          name="vendorDescription"
+          value={inputs.vendorDescription}
+          className="input input-bordered w-full bg-white border border-black"
+          onChange={handleChange}
+        />
+
+        <label htmlFor="representativeName">
+          Change representative name:
+        </label>
+        <input
+          type="text"
+          id="representativeName"
+          name="representativeName"
+          value={inputs.representativeName}
+          className="input input-bordered w-full bg-white border border-black"
+          onChange={handleChange}
+        />
+
+        <label htmlFor="contactNumber">
+          Change contact number:
+        </label>
+        <input
+          type="number"
+          id="contactNumber"
+          name="contactNumber"
+          value={inputs.contactNumber}
+          className="input input-bordered w-full bg-white border border-black"
+          onChange={handleChange}
+        />
+
+        <label htmlFor="vendorLink">
+          Change business website:
+        </label>
+        <input
+          type="text"
+          id="vendorLink"
+          name="vendorLink"
+          value={inputs.vendorLink}
+          className="input input-bordered w-full bg-white border border-black"
+          onChange={handleChange}
+        />
         <button className='border border-black rounded bg-accent text-white'>Save Changes</button>
+        
       </form>
     </div>
   );
