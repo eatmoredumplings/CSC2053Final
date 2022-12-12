@@ -3,13 +3,12 @@ import Axios from 'axios';
 
 const Voucher = ({ id, title, description, category, priceBefore, priceAfter, maxRedeem, expireDate }) => {
 
-  const expDate = moment(expireDate).format('MM-DD-YYYY');
-  
+  const expDate = moment(expireDate).format('YYYY-MM-DD');
+
   const handleDelete = async (id) => {
     try {
       const response = await Axios.delete(`api/voucher/${id}`, { withCredentials: true });
       alert(response.data);
-      console.log(response.data);
     }
     catch (err) {
       alert(err.response.data);
