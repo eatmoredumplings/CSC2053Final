@@ -2,22 +2,29 @@ import Axios from 'axios';
 import { useState } from 'react';
 import moment from 'moment';
 
-const NewVoucher = () => {
+const EditVoucher = ({ id, title, description, category, priceBefore, priceAfter, maxRedeem, expireDate }) => {
 
     const [inputs, setInputs] = useState({
-        title: '',
-        description: '',
-        category: 'Meal',
-        priceBefore: 0,
-        priceAfter: 0,
-        maxRedeem: 0,
-        expireDate: new Date()
+        title: title,
+        description: description,
+        category: category,
+        priceBefore: priceBefore,
+        priceAfter: priceAfter,
+        maxRedeem: maxRedeem,
+        expireDate: moment(expireDate).format('YYYY-MM-DD')
     });
 
+    const defaultDate = new Date(expireDate);
+    defaultDate.setDate(defaultDate.getDate());
+    const date = defaultDate.toISOString().substring(0, 10);
+    
+
     const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            const response = await Axios.post('api/voucher', inputs, { withCredentials: true });
-            alert(response.data);
+            const response = await Axios.delete(`api/voucher/${id}`, { withCredentials: true });
+            const response2 = await Axios.post('api/voucher', inputs, { withCredentials: true });
+            alert("Voucher has been edited.");
         } catch (err) {
             alert(err.response.data);
         }
@@ -29,12 +36,12 @@ const NewVoucher = () => {
 
     const handleCategory = (e) => {
         const { value } = e.target;
-        setInputs((prev) => ({ ...prev, category : value }));
+        setInputs((prev) => ({ ...prev, category: value }));
     };
 
     const handleDate = (e) => {
         const formatDate = moment(e.target.value).format('YYYY-MM-DD');
-        setInputs((prev) => ({ ...prev, expireDate : formatDate }));
+        setInputs((prev) => ({ ...prev, expireDate: formatDate }));
     }
 
     return (
@@ -50,6 +57,7 @@ const NewVoucher = () => {
                         name="title"
                         className="bg-white rounded-md border border-solid border-black mb-4 text-lg h-12 px-3"
                         required
+                        defaultValue={title}
                         onChange={handleChange}
                     />
 
@@ -61,6 +69,7 @@ const NewVoucher = () => {
                         id="description"
                         name="description"
                         className="bg-white rounded-md border border-solid border-black mb-4 text-lg h-12 px-3"
+                        defaultValue={description}
                         onChange={handleChange}
                     />
 
@@ -71,10 +80,9 @@ const NewVoucher = () => {
                         className="select w-full max-w-xs bg-white"
                         onChange={handleCategory}
                     >
-                        <option>Meal</option>
                         <option>Activity</option>
+                        <option>Meal</option>
                     </select>
-
                     <div className="flex">
                         <label htmlFor="priceBefore" className="text-sm">
                             Price Before
@@ -84,6 +92,7 @@ const NewVoucher = () => {
                             id="priceBefore"
                             name="priceBefore"
                             className="bg-white rounded-md border border-solid border-black mb-4 text-lg h-12 px-3"
+                            defaultValue={priceBefore}
                             required
                             onChange={handleChange}
                         />
@@ -96,6 +105,7 @@ const NewVoucher = () => {
                             id="priceAfter"
                             name="priceAfter"
                             className="bg-white rounded-md border border-solid border-black mb-4 text-lg h-12 px-3"
+                            defaultValue={priceAfter}
                             required
                             onChange={handleChange}
                         />
@@ -108,6 +118,7 @@ const NewVoucher = () => {
                         id="maxRedeem"
                         name="maxRedeem"
                         className="bg-white rounded-md border border-solid border-black mb-4 text-lg h-12 px-3"
+                        defaultValue={maxRedeem}
                         required
                         onChange={handleChange}
                     />
@@ -121,18 +132,19 @@ const NewVoucher = () => {
                         name="expireDate"
                         required
                         className="bg-white"
+                        defaultValue={date}
                         onChange={handleDate}
                     />
 
                     <button
                         type="submit"
                         className="mt-8 border-none bg-accent rounded-full text-white text-lg h-14 w-100 hover:bg-gray-500">
-                        CREATE VOUCHER
+                        EDIT VOUCHER
                     </button>
                 </div>
-            </form>
+            </form >
         </div>
     );
 }
 
-export default NewVoucher;
+export default EditVoucher;
