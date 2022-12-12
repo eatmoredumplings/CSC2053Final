@@ -64,6 +64,6 @@ const editVoucher = (req, res) => {
         return res.status(200).json('Voucher has been edited.')
       });
   });
+  
 }
-
 module.exports = { getVouchers, addVoucher, deleteVoucher, editVoucher }
