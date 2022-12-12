@@ -40,7 +40,7 @@ const deleteDocument = (req, res) => {
 
     jwt.verify(token, "jwtSecretKey", (err, vendorInfo) => {
         db.query("DELETE from documents WHERE vendorID = ? AND id = ?",
-        [vendorInfo.id, req.body.id],
+        [vendorInfo.id, req.params.id],
         (err, data) => {
             if (err) return res.status(500).json(err);
             return res.status(200).json('Document has been deleted.')
